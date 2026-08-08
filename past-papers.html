@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Papers — Congress High School</title>
+<meta name="description" content="Download past examination papers by subject, level and year from Congress High School.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Past Papers</div>
+    <h1>Past Examination Papers</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">Revise smarter with our archive of past internal examination papers.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Revision Materials</div>
+      <h2>Browse by Level</h2>
+      <p>Use the filters to narrow down papers, then click download.</p>
+    </div>
+
+    <div class="filter-bar reveal" id="levelFilters">
+      <button class="chip active" data-level="all">All Levels</button>
+      <button class="chip" data-level="S.1">S.1</button>
+      <button class="chip" data-level="S.2">S.2</button>
+      <button class="chip" data-level="S.3">S.3</button>
+      <button class="chip" data-level="S.4">S.4</button>
+      <button class="chip" data-level="S.5">S.5</button>
+      <button class="chip" data-level="S.6">S.6</button>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table class="data-table">
+        <thead>
+          <tr><th>Subject</th><th>Level</th><th>Term</th><th>Year</th><th>File</th></tr>
+        </thead>
+        <tbody id="papersTableBody">
+          <tr><td colspan="5">Loading past papers…</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="form-note" id="noPapersMsg" style="display:none; margin-top:16px;">No past papers found for this level yet — please check back soon.</p>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const tbody = document.getElementById("papersTableBody");
+    const noMsg = document.getElementById("noPapersMsg");
+    const allPapers = (await chsRenderPastPapers("papersTableBody")) || [];
+
+    // Client-side filter by level using the chip bar.
+    document.querySelectorAll("#levelFilters .chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll("#levelFilters .chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        const level = chip.dataset.level;
+        const filtered = level === "all" ? allPapers : allPapers.filter((p) => p.level === level);
+
+        if (filtered.length === 0) {
+          tbody.innerHTML = "";
+          noMsg.style.display = "block";
+          return;
+        }
+        noMsg.style.display = "none";
+        tbody.innerHTML = filtered
+          .map((p) => `
+            <tr>
+              <td>${p.subject}</td><td>${p.level}</td><td>${p.term}</td><td>${p.year}</td>
+              <td><a class="btn btn-ghost btn-sm" href="${p.file_url}" target="_blank" rel="noopener">Download</a></td>
+            </tr>`)
+          .join("");
+      });
+    });
+  });
+</script>
+</body>
+</html>

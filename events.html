@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events &amp; News — Congress High School</title>
+<meta name="description" content="Latest news, achievements and upcoming events at Congress High School.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Events &amp; News</div>
+    <h1>Events &amp; News</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">Stay up to date with what's happening around Congress High School.</p>
+  </div>
+</section>
+
+<!-- UPCOMING EVENTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Calendar</div>
+      <h2>Upcoming Events</h2>
+      <p>Key dates for students, parents and staff this term.</p>
+    </div>
+    <div class="grid grid-3" id="allEvents">
+      <div class="skeleton" style="height:280px;"></div>
+      <div class="skeleton" style="height:280px;"></div>
+      <div class="skeleton" style="height:280px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LATEST NEWS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Newsroom</div>
+      <h2>Latest News &amp; Achievements</h2>
+      <p>Announcements, results and stories from around the school.</p>
+    </div>
+    <div class="grid grid-3" id="allNews">
+      <div class="skeleton" style="height:320px;"></div>
+      <div class="skeleton" style="height:320px;"></div>
+      <div class="skeleton" style="height:320px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER-STYLE CTA -->
+<section class="section section-navy">
+  <div class="container text-center reveal">
+    <h2>Never miss an update</h2>
+    <p style="max-width:520px; margin:0 auto 24px; color:rgba(255,255,255,.8);">Follow our official channels or contact the school office to receive term calendars and announcements directly.</p>
+    <a href="contact.html" class="btn btn-gold">Contact the School Office</a>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    chsRenderEvents("allEvents");
+    chsRenderNews("allNews");
+  });
+</script>
+</body>
+</html>

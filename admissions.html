@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admissions — Congress High School</title>
+<meta name="description" content="Apply to Congress High School. View admission requirements, the application process and submit your application online.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Admissions</div>
+    <h1>Admissions</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">Join a community where learners rise like the sun. Here's everything you need to apply.</p>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Getting Started</div>
+      <h2>Admission Requirements</h2>
+      <p>General entry requirements for Senior One and transfer candidates.</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card reveal" style="--i:0"><div class="card-body">
+        <div class="icon-tile">📋</div>
+        <h3>Senior One (S.1)</h3>
+        <p>Original Primary Leaving Examination (PLE) result slip, birth certificate, and 2 passport photos.</p>
+      </div></div>
+      <div class="card reveal" style="--i:1"><div class="card-body">
+        <div class="icon-tile">🔁</div>
+        <h3>Transfer Students</h3>
+        <p>Transfer letter from previous school, latest report card, and a recommendation letter from the head teacher.</p>
+      </div></div>
+      <div class="card reveal" style="--i:2"><div class="card-body">
+        <div class="icon-tile">🎓</div>
+        <h3>Senior Five (S.5)</h3>
+        <p>Original UCE result slip meeting subject combination cut-off points, and a completed subject-choice form.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">How It Works</div>
+      <h2>Application Process</h2>
+      <p>Four simple steps from application to admission.</p>
+    </div>
+    <div class="grid grid-4">
+      <div class="card reveal" style="--i:0"><div class="card-body">
+        <div class="icon-tile">1</div><h3>Submit Application</h3><p>Complete the online form below or collect a form from the school office.</p>
+      </div></div>
+      <div class="card reveal" style="--i:1"><div class="card-body">
+        <div class="icon-tile">2</div><h3>Document Review</h3><p>Our admissions office verifies your academic documents and results.</p>
+      </div></div>
+      <div class="card reveal" style="--i:2"><div class="card-body">
+        <div class="icon-tile">3</div><h3>Interview / Interaction</h3><p>Shortlisted candidates and parents attend a brief school interaction.</p>
+      </div></div>
+      <div class="card reveal" style="--i:3"><div class="card-body">
+        <div class="icon-tile">4</div><h3>Confirm Admission</h3><p>Pay the acceptance fee to secure your place before the term begins.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Investment in Education</div>
+      <h2>Fee Structure (Per Term)</h2>
+      <p>Indicative fees — contact the bursar's office for the current detailed breakdown.</p>
+    </div>
+    <div class="table-wrap reveal">
+      <table class="data-table">
+        <thead><tr><th>Level</th><th>Day Scholar</th><th>Boarding</th><th>Requirements Fee (one-off)</th></tr></thead>
+        <tbody>
+          <tr><td>Senior 1 – 4 (O-Level)</td><td>UGX 450,000</td><td>UGX 850,000</td><td>UGX 120,000</td></tr>
+          <tr><td>Senior 5 – 6 (A-Level)</td><td>UGX 520,000</td><td>UGX 920,000</td><td>UGX 130,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="grid grid-2" style="gap:50px; align-items:flex-start;">
+      <div class="reveal">
+        <div class="eyebrow">Apply Online</div>
+        <h2>Start Your Application</h2>
+        <p style="color:var(--gray);">Fill in the form and our admissions office will reach out to guide you through the next steps. All submissions are saved securely and reviewed within 3 working days.</p>
+        <div class="card" style="margin-top:24px;"><div class="card-body">
+          <h3>Need help?</h3>
+          <p>Call our admissions line at <strong>+256 700 000 000</strong> or email <strong>admissions@congresshigh.ac.ug</strong>.</p>
+        </div></div>
+      </div>
+
+      <div class="card reveal" style="--i:1">
+        <div class="card-body">
+          <div id="admissionFeedback">
+            <div class="form-success" role="status"></div>
+            <div class="form-error" role="alert"></div>
+          </div>
+          <form id="admissionForm" novalidate>
+            <div class="form-field">
+              <label for="student_name">Student Full Name</label>
+              <input type="text" id="student_name" name="student_name" required placeholder="e.g. Nakiwala Sarah">
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="parent_name">Parent / Guardian Name</label>
+                <input type="text" id="parent_name" name="parent_name" required placeholder="Full name">
+              </div>
+              <div class="form-field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+256 7xx xxx xxx">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required placeholder="you@example.com">
+            </div>
+            <div class="form-field">
+              <label for="class_applying">Class Applying For</label>
+              <select id="class_applying" name="class_applying" required>
+                <option value="">Select class</option>
+                <option>Senior 1</option><option>Senior 2</option><option>Senior 3</option>
+                <option>Senior 4</option><option>Senior 5</option><option>Senior 6</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="previous_school">Previous School</label>
+              <input type="text" id="previous_school" name="previous_school" placeholder="Name of previous school">
+            </div>
+            <div class="form-field">
+              <label for="message">Additional Information</label>
+              <textarea id="message" name="message" rows="3" placeholder="Anything else we should know?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-navy btn-block">Submit Application</button>
+            <p class="form-note" style="margin-top:12px;">By submitting, you consent to Congress High School contacting you regarding this application.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("admissionForm");
+    const feedback = document.getElementById("admissionFeedback");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const btn = form.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Submitting...";
+      chsSubmitAdmissionForm(form, feedback).finally(() => {
+        btn.disabled = false; btn.textContent = "Submit Application";
+      });
+    });
+  });
+</script>
+</body>
+</html>

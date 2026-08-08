@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Congress High School</title>
+<meta name="description" content="Photo gallery of academics, sports, culture and campus life at Congress High School.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Gallery</div>
+    <h1>Photo Gallery</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">Explore moments of learning, achievement and celebration at Congress High School.</p>
+  </div>
+</section>
+
+<section class="section-tight section-alt">
+  <div class="container">
+    <div class="slider reveal" id="gallerySlider">
+      <div class="slider-track">
+        <div class="slide"><div class="slide-caption"><div class="eyebrow">Highlight</div><h3>Annual Sports Gala</h3></div></div>
+        <div class="slide"><div class="slide-caption"><div class="eyebrow">Highlight</div><h3>Science &amp; Innovation Fair</h3></div></div>
+        <div class="slide"><div class="slide-caption"><div class="eyebrow">Highlight</div><h3>Cultural Gala Night</h3></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Browse by Category</div>
+      <h2>All Photos</h2>
+      <p>Filter the gallery to see academics, sports, culture, events and campus shots.</p>
+    </div>
+
+    <div class="filter-bar reveal" id="galleryFilters">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="Academics">Academics</button>
+      <button class="chip" data-cat="Sports">Sports</button>
+      <button class="chip" data-cat="Culture">Culture</button>
+      <button class="chip" data-cat="Events">Events</button>
+      <button class="chip" data-cat="Campus">Campus</button>
+    </div>
+
+    <div class="grid grid-4" id="galleryGrid">
+      <div class="skeleton" style="height:200px;"></div>
+      <div class="skeleton" style="height:200px;"></div>
+      <div class="skeleton" style="height:200px;"></div>
+      <div class="skeleton" style="height:200px;"></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  let galleryItems = [];
+
+  document.addEventListener("DOMContentLoaded", async () => {
+    const { data } = await chsFetchAll("gallery");
+    galleryItems = data || [];
+    renderGalleryGrid(galleryItems);
+
+    document.querySelectorAll("#galleryFilters .chip").forEach((chip) => {
+      chip.addEventListener("click", () => {
+        document.querySelectorAll("#galleryFilters .chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+        const cat = chip.dataset.cat;
+        const filtered = cat === "all" ? galleryItems : galleryItems.filter((g) => g.category === cat);
+        renderGalleryGrid(filtered);
+      });
+    });
+  });
+
+  function renderGalleryGrid(items) {
+    const grid = document.getElementById("galleryGrid");
+    if (!items.length) {
+      grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;"><div class="icon-tile" style="margin:0 auto;">🖼️</div><p>No photos in this category yet.</p></div>`;
+      return;
+    }
+    grid.innerHTML = items
+      .map((g, i) => `
+        <figure class="card reveal" style="--i:${i % 8}; margin:0;">
+          <div class="card-media">${g.image_url ? `<img src="${g.image_url}" alt="${g.title}">` : g.title}</div>
+          <figcaption class="card-body" style="padding:14px 18px;">
+            <span class="card-tag">${g.category || "Gallery"}</span>
+            <h3 style="font-size:1rem;">${g.title}</h3>
+          </figcaption>
+        </figure>`)
+      .join("");
+    window.CHS.initScrollReveal();
+  }
+</script>
+</body>
+</html>

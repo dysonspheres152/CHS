@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — Congress High School</title>
+<meta name="description" content="Learn about Congress High School's history, mission, vision and leadership team.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / About Us</div>
+    <h1>About Congress High School</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">Two decades of nurturing disciplined, knowledgeable learners under the motto "Atya Omusana" — like the sun.</p>
+  </div>
+</section>
+
+<!-- MISSION / VISION / VALUES -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3">
+      <div class="card reveal" style="--i:0"><div class="card-body">
+        <div class="icon-tile">🎯</div>
+        <h3>Our Mission</h3>
+        <p>To provide holistic, quality secondary education that develops academically excellent, morally upright and socially responsible citizens.</p>
+      </div></div>
+      <div class="card reveal" style="--i:1"><div class="card-body">
+        <div class="icon-tile">🔭</div>
+        <h3>Our Vision</h3>
+        <p>To be the leading centre of academic and character excellence in the region, producing learners who rise and shine wherever they go.</p>
+      </div></div>
+      <div class="card reveal" style="--i:2"><div class="card-body">
+        <div class="icon-tile">💎</div>
+        <h3>Our Core Values</h3>
+        <p>Discipline, Integrity, Excellence, Respect and Service — the five pillars guiding every learner and staff member.</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOTTO EXPLAINER -->
+<section class="section section-navy">
+  <div class="container">
+    <div class="grid grid-2" style="align-items:center; gap:50px;">
+      <div class="reveal">
+        <div class="motto-ribbon" style="margin-bottom:18px;"><span class="dot"></span> Atya Omusana</div>
+        <h2>Why "Like the Sun"?</h2>
+        <p style="color:rgba(255,255,255,.82);">Our motto, drawn from Luganda, translates to "how is the sun" — a reminder that the sun rises daily without fail, gives light unconditionally, and reaches everyone equally. We challenge every learner to embody these qualities: consistency, generosity of knowledge, and the ambition to shine brightly in whatever field they pursue.</p>
+      </div>
+      <div class="reveal hero-visual">
+        <div class="ring" style="--_:;">
+          <div class="disc">
+            <div class="disc-content">
+              <div class="crest-initials">CHS</div>
+              <div class="crest-motto">Atya Omusana</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Our Journey</div>
+      <h2>School History</h2>
+      <p>Key milestones that shaped Congress High School into what it is today.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item"><div class="yr">1998</div><h3>Foundation</h3><p>Congress High School opens its doors with two streams of Senior One and a handful of dedicated teachers.</p></div>
+      <div class="timeline-item"><div class="yr">2006</div><h3>First A-Level Class</h3><p>The school introduces Advanced Level education, adding Science and Arts combinations.</p></div>
+      <div class="timeline-item"><div class="yr">2013</div><h3>New Science Wing</h3><p>A modern laboratory block is constructed, boosting practical learning capacity.</p></div>
+      <div class="timeline-item"><div class="yr">2019</div><h3>ICT Hub Launched</h3><p>Computer labs and digital learning resources are introduced school-wide.</p></div>
+      <div class="timeline-item"><div class="yr">2026</div><h3>1,200+ Learners</h3><p>Today, Congress High School serves over 1,200 students with an expanded boarding section.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERSHIP / STAFF -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Meet the Team</div>
+      <h2>School Leadership &amp; Staff</h2>
+      <p>Experienced educators and administrators guiding our learners daily.</p>
+    </div>
+    <div class="grid grid-4" id="staffGrid">
+      <div class="skeleton" style="height:260px;"></div>
+      <div class="skeleton" style="height:260px;"></div>
+      <div class="skeleton" style="height:260px;"></div>
+      <div class="skeleton" style="height:260px;"></div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    chsRenderStaff("staffGrid");
+  });
+</script>
+</body>
+</html>

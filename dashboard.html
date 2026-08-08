@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard — Congress High School</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/jpeg" href="congress.jpeg">
+</head>
+<body class="admin-body">
+
+<div class="admin-shell">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="admin-sidebar" id="adminSidebar">
+    <div class="admin-sidebar-brand">
+      <div class="badge-crest"><img src="congress.jpeg" alt="Congress High School crest"></div>
+      <div>
+        <strong>Congress High</strong>
+        <span>Admin Dashboard</span>
+      </div>
+    </div>
+
+    <nav class="admin-nav" id="adminNav">
+      <!-- Buttons injected by admin-dashboard.js from the PANELS config -->
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <button class="btn btn-outline btn-block" id="logoutBtn" style="border-color: rgba(255,255,255,.3); color:#fff;">Log Out</button>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN AREA ============ -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="admin-mobile-toggle" id="mobileToggle">☰</button>
+        <h1 id="panelTitle">Overview</h1>
+      </div>
+      <div class="who" id="whoAmI">Signed in as admin</div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- Overview stats (shown above every panel) -->
+      <div class="admin-stats" id="adminStats">
+        <div class="admin-stat"><div class="n" id="statNewsN">–</div><div class="l">News Posts</div></div>
+        <div class="admin-stat"><div class="n" id="statEventsN">–</div><div class="l">Events</div></div>
+        <div class="admin-stat"><div class="n" id="statMsgN">–</div><div class="l">Contact Messages</div></div>
+        <div class="admin-stat"><div class="n" id="statAdmN">–</div><div class="l">Admission Applications</div></div>
+      </div>
+
+      <!-- Each panel below is toggled by admin-dashboard.js. -->
+      <section class="admin-panel active" data-panel="home">
+        <div class="panel-head"><h2>Home Content</h2></div>
+        <div class="admin-table-card"><div style="padding:24px;">
+          <p class="form-note" style="margin-bottom:18px;">These figures power the animated counters on the Home page hero section.</p>
+          <form id="homeContentForm">
+            <div class="form-row">
+              <div class="form-field"><label for="hc_students">Students Enrolled</label><input type="number" id="hc_students" name="students_count"></div>
+              <div class="form-field"><label for="hc_staff">Qualified Staff</label><input type="number" id="hc_staff" name="staff_count"></div>
+            </div>
+            <div class="form-row">
+              <div class="form-field"><label for="hc_pass">O-Level Pass Rate (%)</label><input type="number" id="hc_pass" name="pass_rate"></div>
+              <div class="form-field"><label for="hc_founded">Year Founded</label><input type="number" id="hc_founded" name="founded_year"></div>
+            </div>
+            <button type="submit" class="btn btn-navy">Save Home Content</button>
+          </form>
+        </div></div>
+      </section>
+
+      <section class="admin-panel" data-panel="admissions">
+        <div class="panel-head"><h2>Admission Applications</h2></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Student</th><th>Class</th><th>Phone</th><th>Status</th><th>Received</th><th>Actions</th></tr></thead>
+          <tbody id="admissionsTbody"><tr class="empty-row"><td colspan="6">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="events">
+        <div class="panel-head"><h2>Events</h2><button class="btn btn-navy btn-sm" data-add="events">+ Add Event</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Title</th><th>Date</th><th>Location</th><th>Actions</th></tr></thead>
+          <tbody id="events_tbody"><tr class="empty-row"><td colspan="4">Loading…</td></tr></tbody>
+        </table></div>
+
+        <div class="panel-head" style="margin-top:34px;"><h2>News</h2><button class="btn btn-navy btn-sm" data-add="news">+ Add News Post</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Title</th><th>Category</th><th>Published</th><th>Actions</th></tr></thead>
+          <tbody id="news_tbody"><tr class="empty-row"><td colspan="4">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="past_papers">
+        <div class="panel-head"><h2>Past Papers</h2><button class="btn btn-navy btn-sm" data-add="past_papers">+ Add Paper</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Subject</th><th>Level</th><th>Term</th><th>Year</th><th>Actions</th></tr></thead>
+          <tbody id="past_papers_tbody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="constitution_files">
+        <div class="panel-head"><h2>Constitution Files</h2><button class="btn btn-navy btn-sm" data-add="constitution_files">+ Add Document</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Title</th><th>Description</th><th>Actions</th></tr></thead>
+          <tbody id="constitution_files_tbody"><tr class="empty-row"><td colspan="3">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="gallery">
+        <div class="panel-head"><h2>Gallery</h2><button class="btn btn-navy btn-sm" data-add="gallery">+ Add Photo</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Title</th><th>Category</th><th>Actions</th></tr></thead>
+          <tbody id="gallery_tbody"><tr class="empty-row"><td colspan="3">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="contact_messages">
+        <div class="panel-head"><h2>Contact Messages</h2></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Name</th><th>Subject</th><th>Status</th><th>Received</th><th>Actions</th></tr></thead>
+          <tbody id="contact_messages_tbody"><tr class="empty-row"><td colspan="5">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="staff">
+        <div class="panel-head"><h2>Staff</h2><button class="btn btn-navy btn-sm" data-add="staff">+ Add Staff Member</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Name</th><th>Role</th><th>Department</th><th>Actions</th></tr></thead>
+          <tbody id="staff_tbody"><tr class="empty-row"><td colspan="4">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+      <section class="admin-panel" data-panel="settings">
+        <div class="panel-head"><h2>Site Settings</h2><button class="btn btn-navy btn-sm" data-add="settings">+ Add Setting</button></div>
+        <div class="admin-table-card"><table>
+          <thead><tr><th>Key</th><th>Value</th><th>Actions</th></tr></thead>
+          <tbody id="settings_tbody"><tr class="empty-row"><td colspan="3">Loading…</td></tr></tbody>
+        </table></div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<!-- ============ Generic CRUD modal (form fields injected by JS) ============ -->
+<div class="modal-backdrop" id="crudModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="crudModalTitle">Add Item</h3>
+      <button class="modal-close" id="crudModalClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <form id="crudForm"></form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ View-details modal (admissions / contact messages) ============ -->
+<div class="modal-backdrop" id="viewModal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="viewModalTitle">Details</h3>
+      <button class="modal-close" id="viewModalClose" aria-label="Close">&times;</button>
+    </div>
+    <div class="modal-body" id="viewModalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="adminToast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="admin-auth.js"></script>
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Congress High School</title>
+<meta name="description" content="Get in touch with Congress High School — location, phone, email and an online contact form.">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<div id="site-header"></div>
+
+<section class="page-banner">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> / Contact Us</div>
+    <h1>Contact Us</h1>
+    <p style="color:rgba(255,255,255,.8); max-width:560px;">We'd love to hear from you — reach out with any questions about admissions, academics or school life.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid grid-3" style="margin-bottom:60px;">
+      <div class="card reveal" style="--i:0"><div class="card-body">
+        <div class="icon-tile">📍</div>
+        <h3>Our Location</h3>
+        <p data-setting="address">Congress Road, Kampala, Uganda</p>
+      </div></div>
+      <div class="card reveal" style="--i:1"><div class="card-body">
+        <div class="icon-tile">📞</div>
+        <h3>Call Us</h3>
+        <p data-setting="phone">+256 700 000 000</p>
+      </div></div>
+      <div class="card reveal" style="--i:2"><div class="card-body">
+        <div class="icon-tile">✉️</div>
+        <h3>Email Us</h3>
+        <p data-setting="email">info@congresshigh.ac.ug</p>
+      </div></div>
+    </div>
+
+    <div class="grid grid-2" style="gap:50px; align-items:flex-start;">
+      <div class="card reveal">
+        <div class="card-body">
+          <h3 style="margin-bottom:6px;">Send Us a Message</h3>
+          <p style="color:var(--gray); margin-bottom:20px;">Fill out the form and our office will get back to you within 2 working days.</p>
+          <div id="contactFeedback">
+            <div class="form-success" role="status"></div>
+            <div class="form-error" role="alert"></div>
+          </div>
+          <form id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="c_name">Full Name</label>
+                <input type="text" id="c_name" name="name" required placeholder="Your name">
+              </div>
+              <div class="form-field">
+                <label for="c_email">Email Address</label>
+                <input type="email" id="c_email" name="email" required placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="c_subject">Subject</label>
+              <input type="text" id="c_subject" name="subject" required placeholder="What is this about?">
+            </div>
+            <div class="form-field">
+              <label for="c_message">Message</label>
+              <textarea id="c_message" name="message" rows="5" required placeholder="Write your message..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-navy btn-block">Send Message</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="reveal" style="--i:1">
+        <!-- Simple decorative map placeholder — swap for a Google Maps / OpenStreetMap embed -->
+        <div class="card" style="padding:0; overflow:hidden;">
+          <div style="aspect-ratio:4/3; background: radial-gradient(circle at 30% 30%, var(--blue-light), var(--navy) 75%); display:flex; align-items:center; justify-content:center; color:#fff; font-family:var(--font-utility); text-transform:uppercase; letter-spacing:.12em; text-align:center; padding:30px;">
+            📍 Map placeholder<br>Congress Road, Kampala
+          </div>
+        </div>
+        <div class="card" style="margin-top:24px;"><div class="card-body">
+          <h3>Office Hours</h3>
+          <table class="data-table" style="min-width:0;">
+            <tbody>
+              <tr><td>Monday – Friday</td><td>8:00 AM – 5:00 PM</td></tr>
+              <tr><td>Saturday</td><td>9:00 AM – 1:00 PM</td></tr>
+              <tr><td>Sunday</td><td>Closed</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="components.js"></script>
+<script src="main.js"></script>
+<script src="data.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    chsApplySettings();
+    const form = document.getElementById("contactForm");
+    const feedback = document.getElementById("contactFeedback");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const btn = form.querySelector("button[type=submit]");
+      btn.disabled = true; btn.textContent = "Sending...";
+      chsSubmitContactForm(form, feedback).finally(() => {
+        btn.disabled = false; btn.textContent = "Send Message";
+      });
+    });
+  });
+</script>
+</body>
+</html>

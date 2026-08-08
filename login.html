@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login — Congress High School</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/png" href="congress.jpeg">
+</head>
+<body class="admin-body">
+
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="badge-crest"><span>CHS</span></div>
+    <h1>Admin Login</h1>
+    <p class="sub">Sign in with your staff account to manage the school website.</p>
+
+    <div id="loginFeedback">
+      <div class="form-error" role="alert"></div>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <div class="form-field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required placeholder="admin@congresshigh.ac.ug">
+      </div>
+      <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required placeholder="••••••••">
+      </div>
+      <button type="submit" class="btn btn-navy btn-block" id="loginBtn">Sign In</button>
+    </form>
+
+    <p class="form-note" style="margin-top:16px; text-align:center;">
+      Staff accounts are created by the school administrator in Supabase Authentication.
+    </p>
+<a href="index.html" class="login-back">← Back to school website</a>
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="admin-auth.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Skip to dashboard if already authenticated
+    chsAdminRedirectIfLoggedIn("dashboard.html");
+
+    const form = document.getElementById("loginForm");
+    const feedback = document.getElementById("loginFeedback").querySelector(".form-error");
+    const btn = document.getElementById("loginBtn");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      feedback.style.display = "none";
+
+      btn.disabled = true; 
+      btn.textContent = "Signing in...";
+
+      if (!chsSupabaseReady()) {
+        feedback.textContent = "Can't reach the server right now. Please check your connection and try again.";
+        feedback.style.display = "block";
+        btn.disabled = false;
+        btn.textContent = "Sign In";
+        return;
+      }
+
+      const { data, error } = await chsAdminSignIn(form.email.value.trim(), form.password.value);
+      btn.disabled = false; 
+      btn.textContent = "Sign In";
+
+      if (error) {
+        feedback.textContent = error.message || "Incorrect email or password. Please try again.";
+        feedback.style.display = "block";
+        return;
+      }
+
+      window.location.href = "dashboard.html";
+    });
+  });
+</script>
+</body>
+</html>
