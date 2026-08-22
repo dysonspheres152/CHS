@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login — Congress High School</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/jpeg" href="congress.jpeg">
+</head>
+<body data-base="">
+
+<section class="section" style="min-height:100vh; display:flex; align-items:center;">
+  <div class="container" style="max-width:420px;">
+    <div class="text-center" style="margin-bottom:24px;">
+      <div class="badge-crest" style="margin:0 auto 14px;"><img src="congress.jpeg" alt="Congress High School Emblem" style="width:56px; height:56px; border-radius:50%;"></div>
+      <h1 style="font-size:1.5rem;">Staff Login</h1>
+      <p style="color:var(--gray);">Sign in to access the admin dashboard.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
+        <div id="loginFeedback">
+          <div class="form-error" role="alert" style="display:none;"></div>
+        </div>
+        <form id="loginForm" novalidate>
+          <div class="form-field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="you@congresshigh.ac.ug">
+          </div>
+          <div class="form-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="••••••••">
+          </div>
+          <button type="submit" class="btn btn-navy btn-block">Sign In</button>
+        </form>
+      </div>
+    </div>
+
+    <p class="text-center" style="margin-top:18px;"><a href="index.html" class="card-link">← Back to website</a></p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="supabase-config.js"></script>
+<script src="admin-auth.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    // If already signed in, skip straight to the dashboard.
+    if (chsSupabaseReady()) {
+      const { data } = await sb.auth.getSession();
+      if (data && data.session) {
+        window.location.href = "dashboard.html";
+        return;
+      }
+    }
+
+    const form = document.getElementById("loginForm");
+    const errorEl = document.querySelector("#loginFeedback .form-error");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorEl.style.display = "none";
+      const btn = form.querySelector("button[type=submit]");
+      btn.disabled = true;
+      btn.textContent = "Signing in...";
+
+      const { session, error } = await chsAdminSignIn(form.email.value.trim(), form.password.value);
+
+      btn.disabled = false;
+      btn.textContent = "Sign In";
+
+      if (error || !session) {
+        errorEl.textContent = error ? "Invalid email or password." : "Sign in failed. Please try again.";
+        errorEl.style.display = "block";
+        return;
+      }
+      window.location.href = "dashboard.html";
+    });
+  });
+</script>
+</body>
+</html>

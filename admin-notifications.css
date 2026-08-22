@@ -1,0 +1,118 @@
+/* ==========================================================================
+   ADMIN-NOTIFICATIONS.CSS
+   Styles for the notification bell + dropdown added to dashboard.html's
+   topbar. Kept in its own file (rather than merged into admin.css, which
+   wasn't part of this handoff) so nothing in your existing admin styling
+   gets overwritten. Feel free to fold these rules into admin.css later.
+   ========================================================================== */
+
+.notif-wrap {
+  position: relative;
+}
+
+.notif-bell {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 6px;
+}
+
+.notif-count {
+  display: none;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: #d9364a;
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 16px;
+  text-align: center;
+  font-weight: 600;
+}
+.notif-count.show {
+  display: block;
+}
+
+.notif-panel {
+  display: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 320px;
+  max-height: 380px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+  z-index: 50;
+  flex-direction: column;
+}
+.notif-panel.open {
+  display: flex;
+}
+
+.notif-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-bottom: 1px solid #eee;
+}
+
+.notif-mark-all {
+  background: none;
+  border: none;
+  color: var(--blue, #1d4ed8);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.notif-list {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.notif-item {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f2f2f2;
+  cursor: pointer;
+}
+.notif-item:hover {
+  background: #f8f8f8;
+}
+.notif-item.unread {
+  background: #eef4ff;
+}
+.notif-item.unread:hover {
+  background: #e3edff;
+}
+
+.notif-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+}
+.notif-msg {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 2px;
+}
+.notif-time {
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 4px;
+}
+
+.notif-empty {
+  padding: 20px 14px;
+  text-align: center;
+  color: #999;
+  font-size: 0.85rem;
+}
