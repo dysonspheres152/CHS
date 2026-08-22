@@ -3,8 +3,8 @@
    Initializes the Supabase JS client using your production keys.
    ========================================================================== */
 
-const SUPABASE_URL = "https://vzayikzkldwbkvqlfmau.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_cs3nlY9w6q5sbv8n8H1ndA_y-v15Mai";
+const SUPABASE_URL = "https://kxnaohhpmeokfykmjgxj.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_vuSQv1VAU_bYezXkpwcLCA_Xy8kbnYm";
 
 let sb = null;
 
